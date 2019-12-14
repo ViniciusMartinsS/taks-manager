@@ -8,11 +8,12 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-const { userRouter } = require('../routes')
+const { loginRouter, userRouter } = require('../routes')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use('/auth', loginRouter)
 app.use('/user', userRouter)
 
 app.listen(3000, () => {
