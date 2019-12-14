@@ -25,3 +25,27 @@ module.exports.createHandler = (req, res, entity) => {
       res.status(400).send(formatErr(err))
     )
 }
+
+module.exports.updateHandler = (req, res, entity) => {
+  const { update } = require(`../src/controller/${entity}`)
+
+  return update(req)
+    .then(response =>
+      res.send(formatResponse(response))
+    )
+    .catch(err =>
+      res.status(400).send(formatErr(err))
+    )
+}
+
+module.exports.removeHandler = (req, res, entity) => {
+  const { remove } = require(`../src/controller/${entity}`)
+
+  return remove(req)
+    .then(response =>
+      res.send(formatResponse(response))
+    )
+    .catch(err =>
+      res.status(400).send(formatErr(err))
+    )
+}

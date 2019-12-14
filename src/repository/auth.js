@@ -1,7 +1,7 @@
 'use strict'
 
 const models = require('../../database/models')
-const User = models.User
+const Auth = models.User
 
 module.exports.findOne = payload =>
-  User.findOne({ ...payload })
+  Auth.findOne({ ...payload })

@@ -15,7 +15,11 @@ module.exports = ({
       .replace(/\s{2,}/g, ' ')
       .label('name')
       .required()
-      .description('project name')
+      .description('project name'),
+
+    userId: Joi.number()
+      .required()
+      .description('The id of a user')
   },
 
   update: {
@@ -31,7 +35,7 @@ module.exports = ({
       .description('project name')
   },
 
-  delete: {
+  remove: {
     id: Joi.number()
       .required()
       .description('The id of a project')

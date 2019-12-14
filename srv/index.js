@@ -8,13 +8,14 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-const { loginRouter, userRouter } = require('../routes')
+const { loginRouter, projectRouter, userRouter } = require('../routes')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/auth', loginRouter)
-app.use('/user', userRouter)
+app.use('/projects', projectRouter)
+app.use('/users', userRouter)
 
 app.listen(3000, () => {
   console.log('Server running on 3000')
