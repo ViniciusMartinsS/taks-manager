@@ -6,7 +6,11 @@ module.exports = ({
   select: {
     id: Joi.number()
       .optional()
-      .description('The id of a project')
+      .description('The id of a project'),
+
+    userId: Joi.number()
+      .optional()
+      .description('The id of a user')
   },
 
   create: {
@@ -38,6 +42,10 @@ module.exports = ({
   remove: {
     id: Joi.number()
       .required()
-      .description('The id of a project')
+      .description('The id of a project'),
+
+    userId: Joi.number()
+      .optional()
+      .description('The id of a user')
   }
 })
