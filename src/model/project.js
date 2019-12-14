@@ -9,12 +9,13 @@ const {
 } = require('../repository/project')
 
 module.exports.selectProjectData = async params => {
-  const { id, userId } = params
+  const { id, name, userId } = params
 
   const payload = {
     where: {
       ...(id && { id }),
-      ...(userId && { userId })
+      ...(userId && { userId }),
+      ...(name && { name })
     }
   }
 
