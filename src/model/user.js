@@ -6,6 +6,7 @@ module.exports.selectUserData = async params => {
   const { id, name, email, password } = params
 
   const payload = {
+    attributes: [ 'id', 'name', 'email' ],
     where: {
       ...(id && { id: id }),
       ...(name && { name: name }),
