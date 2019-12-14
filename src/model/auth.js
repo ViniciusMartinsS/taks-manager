@@ -1,18 +1,14 @@
 'use strict'
 
-const { compareSync } = require('bcrypt')
-const { findOne } = require('../repository/auth')
+const { compareSync, hashSync } = require('bcrypt')
+const { selectUserData } = require('./user')
+const { create } = require('../repository/user')
 const { generateJWT } = require('../../utils')
 
-module.exports.authSelectUser = async params => {
-  const payload = {
-    attributes: [ 'id', 'email', 'password' ],
-    where: {
-      email: params.email
-    }
-  }
+const SALT_ROUNDS = 10
 
-  const response = await findOne(payload)
+module.exports.authSelectUser = async params => {
+  const response = await selectUserData({ email: params.email })
 
   if (!response) {
     throw new Error('User does not exist')
@@ -25,6 +21,18 @@ module.exports.authSelectUser = async params => {
   const token = generateJWT(response)
 
   return { ...response.dataValues, token }
+}
+
+module.exports.authRegisterUser = async params => {
+  const doesEmailAlreadyExist = await selectUserData({ email: params.email })
+
+  if (doesEmailAlreadyExist) {
+    throw new Error('Email already registered')
+  }
+
+  params.password = hashSync(params.password, SALT_ROUNDS)
+
+  return create(params)
 }
 
 function isUserPasswordEqual (params, args) {

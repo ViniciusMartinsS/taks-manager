@@ -1,11 +1,8 @@
 'use strict'
 
-const { hashSync } = require('bcrypt')
-const { create, findAll, findOne } = require('../repository/user')
+const { findAll, findOne } = require('../repository/user')
 
-const SALT_ROUNDS = 10
-
-async function selectUserData (params) {
+module.exports.selectUserData = async params => {
   const { id, name, email, password } = params
 
   const payload = {
@@ -20,21 +17,4 @@ async function selectUserData (params) {
   return Object.keys(payload.where).length
     ? findOne(payload)
     : findAll(payload)
-}
-
-async function createUserData (params) {
-  const doesEmailAlreadyExist = await selectUserData({ email: params.email })
-
-  if (doesEmailAlreadyExist) {
-    throw new Error('Email already registered')
-  }
-
-  params.password = hashSync(params.password, SALT_ROUNDS)
-
-  return create(params)
-}
-
-module.exports = {
-  createUserData,
-  selectUserData
 }
