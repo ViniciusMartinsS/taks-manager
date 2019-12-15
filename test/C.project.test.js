@@ -1,4 +1,3 @@
-'use strict'
 /* eslint-disable node/no-unpublished-require */
 /* eslint-env mocha */
 /* eslint no-debugger: off */
@@ -10,7 +9,7 @@ const Mock = require('./mocks/project')
 const PROJECT = {}
 
 describe('Project Test Suite', () => {
-  it('Expect to not select a project when payload is not valid', async () => {
+  it('Expect to not create a project when payload is not valid', async () => {
     try {
       const params = Mock.create.invalid
       const response = await create(params)
@@ -78,5 +77,17 @@ describe('Project Test Suite', () => {
 
     expect(typeof response).to.be.equal('number')
     expect(response).to.be.equal(1)
+  })
+
+  it('Expect to create a project to later on associate to a task', async () => {
+    const params = Mock.create.valid
+    const { dataValues: response } = await create(params)
+
+    expect(typeof response).to.be.equal('object')
+    expect(typeof response.name).to.be.equal('string')
+    expect(response.name).to.be.equal(params.body.name)
+    expect(typeof response.userId).to.be.equal('number')
+    expect(response.userId).to.be.equal(params.body.userId)
+    module.exports = { PROJECT_ID: response.id }
   })
 })

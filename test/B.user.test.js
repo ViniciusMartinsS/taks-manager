@@ -1,4 +1,3 @@
-'use strict'
 /* eslint-disable node/no-unpublished-require */
 /* eslint-env mocha */
 /* eslint no-debugger: off */
