@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 
 app.use('/auth', loginRouter)
 app.use('/projects', validateAuthToken, projectRouter)
-app.use('/tasks', taskRouter)
+app.use('/tasks', validateAuthToken, taskRouter)
 app.use('/users', validateAuthToken, userRouter)
 
 app.listen(3000, () => {

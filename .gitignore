@@ -9,3 +9,6 @@ package-lock.json
 
 # Webstorm ide
 .idea
+
+#nyc
+.nyc_output

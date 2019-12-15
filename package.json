@@ -6,7 +6,7 @@
     "node": ">=8.10.0"
   },
   "scripts": {
-    "test": "mocha -S test/*.test.js",
+    "test": "nyc mocha -S test/*.test.js",
     "migrate": "../node_modules/.bin/sequelize db:migrate"
   },
   "author": "Vinicius Simone Martins",
@@ -16,6 +16,14 @@
       "pre-commit": "./node_modules/eslint/bin/eslint.js ./",
       "pre-push": "npm test"
     }
+  },
+  "nyc": {
+    "exclude": [
+      "coverage",
+      "test",
+      "srv",
+      "database"
+    ]
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -27,7 +35,8 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^2.3.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "@hapi/joi": "^15.0.3",

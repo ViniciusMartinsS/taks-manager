@@ -18,8 +18,8 @@ module.exports.schemaValidator = (req, entity, schema) => {
 
 function defineParams (req) {
   return {
-    ...req.body,
-    ...(req.params && req.params.id && { ...req.params }),
-    ...req.query
+    ...(req && req.body && { ...req.body }),
+    ...(req && req.params && req.params.id && { ...req.params }),
+    ...(req && req.query && { ...req.query })
   }
 }
