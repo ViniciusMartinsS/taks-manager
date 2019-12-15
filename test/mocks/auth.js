@@ -5,11 +5,19 @@ module.exports = {
     valid: {
       body: {
         name: 'test',
-        email: 'test@gmail.com',
+        email: `test${Math.random()}@gmail.com`,
         password: '12345'
       }
     },
 
     invalid: {}
+  },
+
+  login: {
+    valid: {
+      body: {
+        password: '12345'
+      }
+    }
   }
 }
