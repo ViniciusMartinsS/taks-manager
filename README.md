@@ -7,16 +7,25 @@ ____
 
 - MySQL (Configure on ./database/config/config.json)
 - NodeJs - v12.13.1
+- Docker
 
 ___
 
 # Getting Started
 
+
 - Clone Project
+
+Docker: 
+- On projects root run the following command: `docker-compose up --build`
+- Server runs on 3000
+
+Locally: 
 - Install dependencies
 - Run the following command: `npm run migrate`
 - Start the API server by running: `npm start`
 - Server runs on 3000
+- Tests should be run locally
 ___
 
 # EndPoints
