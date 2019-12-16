@@ -12,7 +12,13 @@ ___
 
 # Getting Started
 
+
 - Clone Project
+
+Docker: 
+- On projects root run the following command: `docker-compose up --build`
+
+Locally: 
 - Install dependencies
 - Run the following command: `npm run migrate`
 - Start the API server by running: `npm start`
