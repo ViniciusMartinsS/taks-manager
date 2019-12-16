@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  task-manager:
+    build:
+      context: ./
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      MYSQL_DB: task_manager
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  mysql:
+    image: mysql
+    ports:
+      - 3006:3006
+    networks:
+      default:
+        aliases:
+          - mysql.dev
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: task_manager
+      WAIT_HOSTS: mysql.dev:3306
