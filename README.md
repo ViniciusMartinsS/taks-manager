@@ -18,6 +18,7 @@ ___
 
 Docker: 
 - On projects root run the following command: `docker-compose up --build`
+- Server runs on 3000
 
 Locally: 
 - Install dependencies
