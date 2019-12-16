@@ -45,20 +45,6 @@ describe('Project Test Suite', () => {
     expect(typeof response[0].dataValues.userId).to.be.equal('number')
   })
 
-  it('Expect to select a specific project by id', async () => {
-    const params = Mock.show.valid
-    params.body.id = PROJECT.id
-    const response = await show(params)
-
-    expect(typeof response).to.be.equal('object')
-    expect(response).to.have.property('id')
-    expect(typeof response.id).to.be.equal('number')
-    expect(response).to.have.property('name')
-    expect(typeof response.name).to.be.equal('string')
-    expect(response).to.have.property('userId')
-    expect(typeof response.userId).to.be.equal('number')
-  })
-
   it('Expect to update a specific project by id', async () => {
     const params = Mock.update.valid
     params.body.id = PROJECT.id

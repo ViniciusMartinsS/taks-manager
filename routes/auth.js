@@ -11,7 +11,7 @@ router.route('/login')
         res.send(formatResponse(response))
       )
       .catch(err =>
-        res.status(400).send(formatErr(err))
+        res.status(401).send(formatErr(err))
       )
   )
 

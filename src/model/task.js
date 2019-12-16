@@ -3,7 +3,6 @@
 const {
   create,
   findAll,
-  findOne,
   update,
   remove
 } = require('../repository/task')
@@ -21,9 +20,7 @@ module.exports.selectTaskData = async params => {
     }
   }
 
-  return Object.keys(payload.where).length
-    ? findOne(payload)
-    : findAll(payload)
+  return findAll(payload)
 }
 
 module.exports.createTaskData = async params =>

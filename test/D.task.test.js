@@ -53,23 +53,6 @@ describe('Task Test Suite', () => {
     expect(response[0].dataValues).to.have.property('endAt')
   })
 
-  it('Expect to select a specific task by id', async () => {
-    const params = Mock.show.valid
-    params.body.id = TASK.id
-    const response = await show(params)
-
-    expect(typeof response).to.be.equal('object')
-    expect(response).to.have.property('id')
-    expect(typeof response.id).to.be.equal('number')
-    expect(response).to.have.property('description')
-    expect(typeof response.description).to.be.equal('string')
-    expect(response).to.have.property('projectId')
-    expect(typeof response.projectId).to.be.equal('number')
-    expect(response).to.have.property('done')
-    expect(typeof response.done).to.be.equal('boolean')
-    expect(response).to.have.property('endAt')
-  })
-
   it('Expect to update a specific task by id', async () => {
     const params = Mock.update.valid
     params.body.id = TASK.id
