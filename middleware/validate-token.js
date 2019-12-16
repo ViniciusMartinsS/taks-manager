@@ -1,7 +1,7 @@
 'use strict'
 
 const jwt = require('jsonwebtoken')
-const JWT_KEY = process.env.JWT_KEY
+const JWT_KEY = process.env.JWT_KEY || 'taskManagerSecretKey'
 const { token } = require('../src/controller/auth')
 
 module.exports.validateAuthToken = async (req, res, next) => {
