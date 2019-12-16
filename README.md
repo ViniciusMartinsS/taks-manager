@@ -5,7 +5,7 @@ ____
 
 # Dependencies
 
-- MySQL
+- MySQL (Configure on ./database/config/config.json)
 - NodeJs - v12.13.1
 
 ___
