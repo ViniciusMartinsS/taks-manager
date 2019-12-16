@@ -23,6 +23,7 @@ Locally:
 - Run the following command: `npm run migrate`
 - Start the API server by running: `npm start`
 - Server runs on 3000
+- Tests should be run locally
 ___
 
 # EndPoints
