@@ -15,7 +15,7 @@ module.exports.formatResponse = result => ({
 
 module.exports.generateJWT = response =>
   jwt.sign({
-    id: response.dataValues._id,
+    id: response.dataValues.id,
     email: response.dataValues.email
   },
   JWT_KEY, {
