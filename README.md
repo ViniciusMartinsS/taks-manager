@@ -61,5 +61,3 @@ All possible endpoints for the task service:
 - `POST /tasks`
 - `PUT /tasks/:id`
 - `DELETE /tasks/:id`
-
-___
